@@ -1,0 +1,78 @@
+{
+  "bounds": [
+    -105.3094,
+    39.9585,
+    -105.184,
+    40.0572
+  ],
+  "center": [
+    -105.2668,
+    40.0075,
+    16
+  ],
+  "format": "png",
+  "interactivity": {
+    "fields": [
+      "name",
+      "amenity",
+      "opening_hours",
+      "takeaway",
+      "payment_cash",
+      "payment_account_cards",
+      "payment_meal_plan",
+      "payment_campus_cash",
+      "payment_munch_money",
+      "phone",
+      "operator",
+      "osm_id"
+    ],
+    "layer": "dining",
+    "template_full": "<h2>{{name}}</h2>\n<hr />\n<p>amenity:{{amenity}}</p>\n<p>opening_hours: {{opening_hours}}</p>\n<p>takeaway: {{takeaway}}</p>\n<p>payment:cash: {{payment_cash}}</p>\n<p>payment:account_cards: {{payment_account_cards}}</p>\n<p>payment:meal_plan: {{payment_meal_plan}}</p>\n<p>payment:campus_cash: {{payment_campus_cash}}</p>\n<p>payment:munch_money: {{payment_munch_money}}</p>\n<p>phone: {{phone}}</p>\n<p>operator: {{operator}}</p>\n"
+  },
+  "minzoom": 14,
+  "maxzoom": 21,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "dining.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "point",
+      "extent": [
+        -109.82994798471142,
+        36.322930295622285,
+        -99.3867509861653,
+        42.1058370951973
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way, osm_id, name, amenity, tags->'takeaway' as takeaway, (tags->'payment:cash') as payment_cash, (tags->'payment:account_cards') as payment_account_cards, (tags->'opening_hours') as opening_hours, (tags->'shop') as shop, (tags->'phone') as phone, (tags->'payment:meal_plan') as payment_meal_plan, (tags->'payment:munch_money') as payment_munch_money, (tags->'payment:campus_cash') as payment_campus_cash, operator\nFROM planet_osm_point\nWHERE amenity IN ('restaurant','cafeteria','fast_food', 'cafe')\nOR shop IN ('convenience')\n ) as dining",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "-12226213.8835098,4345147.54697933,-11063682.5113778,5176846.53563924",
+        "dbname": "osm_cuboulder",
+        "host": "localhost",
+        "port": "5432",
+        "user": "osm_read",
+        "password": "ZrJ3M4qeQN",
+        "id": "dining",
+        "project": "cu-dining",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "dining",
+      "class": "dining",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "dining"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "cuboulder.cu-basemap",
+  "description": "",
+  "attribution": "",
+  "name": "CU Dining Halls, Restaurants, & Cafes",
+  "legend": ""
+}
